@@ -19,10 +19,3 @@ RSpec.describe "project show page" do
     expect(page).to have_content("Number of Contestants: 2")
   end
 end
-
-# When I visit a project's show page
-# I see a count of the number of contestants on this project
-# (e.g.    Litfit
-#     Material: Lamp Shade
-#   Challenge Theme: Apartment Furnishings
-#   Number of Contestants: 3 )
