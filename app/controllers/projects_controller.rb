@@ -5,11 +5,10 @@ class ProjectsController  <ApplicationController
   end
 
   def update
-    project = Project.find(params[:id])
     ContestantProject.create(
       contestant_id: params["Contestant ID:"],
-      project_id: project.id)
-    redirect_to "/projects/#{project.id}"
+      project_id: params[:id])
+    redirect_to "/projects/#{params[:id]}"
   end
 
 end
