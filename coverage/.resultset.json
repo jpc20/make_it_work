@@ -243,6 +243,7 @@
           1,
           null,
           1,
+          1,
           null
         ]
       },
@@ -383,7 +384,7 @@
           null
         ]
       },
-      "/Users/jack/turing/2module/independent_challenge/make_it_work/app/controllers/projects_controller.rb": {
+      "/Users/jack/turing/2module/independent_challenge/make_it_work/app/controllers/contestants_controller.rb": {
         "lines": [
           1,
           null,
@@ -398,8 +399,18 @@
           1,
           null
         ]
+      },
+      "/Users/jack/turing/2module/independent_challenge/make_it_work/app/controllers/projects_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1589556485
+    "timestamp": 1589557230
   }
 }

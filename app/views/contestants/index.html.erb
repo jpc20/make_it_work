@@ -1,0 +1,14 @@
+<h1>All Contestants</h1>
+
+<% @contestants.each do |contestant| %>
+  <div id="contestant-<%= contestant.id %>">
+    <%= contestant.name %>
+    Projects: <% contestant.projects.each do |project| %>
+                <% if project != contestant.projects.last && contestant.projects.length != 1 %>
+                  <%= "#{project.name}," %>
+                <% else %>
+                  <%= project.name %>
+                <% end %>
+              <% end %>
+  </div>
+<% end %>
