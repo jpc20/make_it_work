@@ -7,6 +7,7 @@ RSpec.describe "project show page" do
     @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
     @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
     @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
+    @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
   end
@@ -19,10 +20,24 @@ RSpec.describe "project show page" do
     expect(page).to have_content("Number of Contestants: 2")
     expect(page).to have_content("Average Contestant Experience: 12.5")
   end
+
+  it "user can add a contestant" do
+    visit "/projects/#{@news_chic.id}"
+    fill_in "Contestant ID:", with: @kentaro.id
+    click_button "Add Contestant To Project"
+    expect(current_path).to eq('/projects/#{@news_chic.id}')
+    expect(page).to have_content("Number of Contestants: 3")
+
+    visit "/contestants"
+    within "#contestant-#{@kentaro.id}" do
+      expect(page).to have_content("Projects: #{@news_chic.name}")
+    end
+  end
 end
-# I see the average years of experience for the contestants that worked on that project
-# (e.g.    Litfit
-#     Material: Lamp Shade
-#   Challenge Theme: Apartment Furnishings
-#   Number of Contestants: 3
-#   Average Contestant Experience: 10.25 years)
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
