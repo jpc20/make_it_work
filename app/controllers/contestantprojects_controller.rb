@@ -1,6 +1,6 @@
 class ContestantprojectsController < ApplicationController
 
-  def new
+  def create
     ContestantProject.create(
       contestant_id: params["Contestant ID:"],
       project_id: params[:project_id])
